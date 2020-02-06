@@ -22,8 +22,7 @@ plugins {
   id("io.knotx.unit-test")
   id("io.knotx.codegen")
   id("io.knotx.jacoco")
-
-  id("org.nosphere.apache.rat") version "0.4.0"
+  id("org.nosphere.apache.rat") version "0.6.0"
 }
 
 dependencies {
@@ -44,7 +43,7 @@ dependencies {
 
 tasks {
   named<RatTask>("rat") {
-    excludes.addAll("**/*.json", "*.md", "**/*.templ", "**/*.adoc", "**/build/*", "**/out/*", "**/generated/*", "/src/test/resources/*", "*.iml", "gradle.properties")
+    excludes.addAll(listOf("**/*.json", "*.md", "**/*.templ", "**/*.adoc", "**/build/*", "**/out/*", "**/generated/*", "/src/test/resources/*", "*.iml", "gradle.properties"))
   }
   getByName("build").dependsOn("rat")
 }
